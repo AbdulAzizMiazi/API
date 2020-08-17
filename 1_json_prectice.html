@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1#Application Programming Interface(API)</title>
+</head>
+<body>
+    <h1>JavaScript Object Notation(JSON)</h1>
+
+
+    <script>
+        const info = { id: 3002, name: "Abdul Aziz"};//normal object
+        //converting object to JSON
+        const infoJson = JSON.stringify(info);
+        /*
+        Result: index.html:16 {"id":3002,"name":"Abdul Aziz"}
+        */
+
+        //Now, JSON to object
+        console.log(infoJson);
+        const infoJsonToObject = JSON.parse(infoJson);
+        console.log(infoJsonToObject);
+        /*here. infoJsonToObject === info*/
+    </script>
+</body>
+</html>

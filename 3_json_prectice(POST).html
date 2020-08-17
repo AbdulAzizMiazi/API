@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3#Application Programming Interface(API)</title>
+</head>
+<body>
+    <h1>Practicing (GET) with JSON Placeholder</h1>
+    <input type="text" placeholder="Your Name" id="name">
+    <br>
+    <input type="text" placeholder="Your Comment" id="comment">
+    <br>
+    <button type="submit" id="submit">Post</button>
+
+    <script>
+        
+        document.getElementById("submit").addEventListener("click",function(){
+            const userName = document.getElementById("name").value;
+            const userComment = document.getElementById("comment").value;
+            const userId = Math.random()*100;
+            const object = {
+                name: userName,
+                comment: userComment,
+                id: userId
+            }
+            postNow(object);
+            document.getElementById("name").value = "";
+            document.getElementById("comment").value = "";
+        })
+
+        function postNow(DataForPost) {
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST', //changes here for post
+                body: JSON.stringify(DataForPost), //changes here for post
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8" //changes here for post
+                }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => alert("Please, try again later...!!!"))
+        }
+    </script>
+</body>
+</html>

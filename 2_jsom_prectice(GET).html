@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2#Application Programming Interface(API)</title>
+</head>
+<body>
+    <h1>Practicing (GET) with JSON Placeholder</h1>
+    <ul id="userName"></ul>
+
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => dataProcessing(json)) //changes for get
+        .catch(error => console.log(error))
+
+
+        function dataProcessing (usersInfo){
+            const users = usersInfo.map(everyUser => {
+                const target = document.getElementById("userName");
+                const newerLI = document.createElement("li");
+                newerLI.innerText = everyUser.name;
+                target.appendChild(newerLI);
+            });
+        }
+
+    </script>
+</body>
+</html>
